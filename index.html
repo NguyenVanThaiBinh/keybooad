@@ -14,6 +14,7 @@
         height="100"
         width="80"
         src="https://pocketmoneytreasures.com.au/assets/uploads/2019/09/GSB-19_Graduation_1-1.jpg"
+        alt="balls"
       />
       <br /><br /><br /><br /><br />
       <p>Click button below to move the image to right</p>
@@ -24,6 +25,8 @@
       <input type="button" value="down" onclick="moveDown();" />
     </form>
     <script>
+         window.onload = init;
+        let step=20;
       let imgObj = null;
       imgObj = document.getElementById("myImage");
 
@@ -33,28 +36,24 @@
         imgObj.style.left = "0px";
       }
       function moveRight() {
-        imgObj.style.left = parseInt(imgObj.style.left) + 20 + "px";
+        if(parseInt(imgObj.style.left) < (window.innerWidth-step-80))
+        imgObj.style.left = parseInt(imgObj.style.left) + step + "px";
       }
       function moveLeft() {
-        imgObj.style.left = parseInt(imgObj.style.left) - 20 + "px";
+        if(parseInt(imgObj.style.left) >0)
+        imgObj.style.left = parseInt(imgObj.style.left) - step + "px";
       }
       function moveUp() {
-        imgObj.style.top = parseInt(imgObj.style.top) - 20 + "px";
+        if(parseInt(imgObj.style.top) > 0)
+        imgObj.style.top = parseInt(imgObj.style.top) - step + "px";
       }
       function moveDown() {
-        imgObj.style.top = parseInt(imgObj.style.top) + 20 + "px";
+        if(parseInt(imgObj.style.top) < (window.innerHeight-step-100))
+        imgObj.style.top = parseInt(imgObj.style.top) + step + "px";
       }
-      var rect = object.getBoundingClientRect(); // getting the properties
+      
 
-      if (
-        rect.right > window.innerWidth || // comparing width
-        rect.bottom > window.innerHeight
-      ) {
-        // comparing height
-        reappear(imgObj);
-      } // re-randomizing
-
-      window.onload = init;
+     
     </script>
   </body>
 </html>
