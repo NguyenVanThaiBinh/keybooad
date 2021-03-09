@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form>
+      <img
+        id="myImage"
+        style="position: absolute; left: 0; top: 0"
+        height="100"
+        width="80"
+        src="https://pocketmoneytreasures.com.au/assets/uploads/2019/09/GSB-19_Graduation_1-1.jpg"
+      />
+      <br /><br /><br /><br /><br />
+      <p>Click button below to move the image to right</p>
+
+      <input type="button" value="right" onclick="moveRight();" />
+      <input type="button" value="left" onclick="moveLeft();" />
+      <input type="button" value="up" onclick="moveUp();" />
+      <input type="button" value="down" onclick="moveDown();" />
+    </form>
+    <script>
+      let imgObj = null;
+      imgObj = document.getElementById("myImage");
+
+      function init() {
+        imgObj = document.getElementById("myImage");
+        imgObj.style.position = "relative";
+        imgObj.style.left = "0px";
+      }
+      function moveRight() {
+        imgObj.style.left = parseInt(imgObj.style.left) + 20 + "px";
+      }
+      function moveLeft() {
+        imgObj.style.left = parseInt(imgObj.style.left) - 20 + "px";
+      }
+      function moveUp() {
+        imgObj.style.top = parseInt(imgObj.style.top) - 20 + "px";
+      }
+      function moveDown() {
+        imgObj.style.top = parseInt(imgObj.style.top) + 20 + "px";
+      }
+      var rect = object.getBoundingClientRect(); // getting the properties
+
+      if (
+        rect.right > window.innerWidth || // comparing width
+        rect.bottom > window.innerHeight
+      ) {
+        // comparing height
+        reappear(imgObj);
+      } // re-randomizing
+
+      window.onload = init;
+    </script>
+  </body>
+</html>
